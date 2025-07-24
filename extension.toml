@@ -1,0 +1,9 @@
+id = "mcp-server-shortcut"
+name = "Shortcut MCP Server"
+description = "Model Context Protocol (MCP) Server for Shortcut"
+version = "0.0.1"
+schema_version = 1
+authors = ["Shortcut Software Company <support@shortcut.com>"]
+repository = "https://github.com/useshortcut/zed-extension-mcp-server-shortcut"
+
+[context_servers.mcp-server-shortcut]
