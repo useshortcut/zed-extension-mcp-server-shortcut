@@ -7,3 +7,4 @@ authors = ["Shortcut Software Company <support@shortcut.com>"]
 repository = "https://github.com/useshortcut/zed-extension-mcp-server-shortcut"
 
 [context_servers.mcp-server-shortcut]
+name = "Shortcut MCP Server"
