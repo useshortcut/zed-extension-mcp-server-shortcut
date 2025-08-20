@@ -21,7 +21,6 @@ use zed_extension_api::{
 };
 
 const PACKAGE_NAME: &str = "@shortcut/mcp";
-const PACKAGE_VERSION: &str = "0.10.1";
 const SERVER_PATH: &str = "node_modules/@shortcut/mcp/dist/index.js";
 
 struct ShortcutModelContextExtension;
@@ -41,9 +40,10 @@ impl zed::Extension for ShortcutModelContextExtension {
         _context_server_id: &ContextServerId,
         project: &Project,
     ) -> Result<Command> {
+        let latest_version = zed::npm_package_latest_version(PACKAGE_NAME)?;
         let version = zed::npm_package_installed_version(PACKAGE_NAME)?;
-        if version.as_deref() != Some(PACKAGE_VERSION) {
-            zed::npm_install_package(PACKAGE_NAME, PACKAGE_VERSION)?;
+        if version.as_deref() != Some(latest_version.as_ref()) {
+            zed::npm_install_package(PACKAGE_NAME, &latest_version)?;
         }
 
         let settings = ContextServerSettings::for_project("mcp-server-shortcut", project)?;
